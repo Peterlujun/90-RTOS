@@ -107,7 +107,7 @@ void Task1Function(void * param)
 	int i = 0;
 	while (1)
 	{
-		xQueueSend(xQueueHandle1, &i, portMAX_DELAY);
+		xQueueSend(xQueueHandle1, &i, portMAX_DELAY);  // 写队列
 		i++;
 		vTaskDelay(10);
 	}
@@ -118,7 +118,7 @@ void Task2Function(void * param)
 	int i = -1;
 	while (1)
 	{
-		xQueueSend(xQueueHandle2, &i, portMAX_DELAY);
+		xQueueSend(xQueueHandle2, &i, portMAX_DELAY);	// 写队列
 		i--;
 		vTaskDelay(20);
 	}
@@ -131,7 +131,7 @@ void Task3Function(void * param)
 	while (1)
 	{
 		/* 1. read queue set: which queue has data */
-		handle = xQueueSelectFromSet(xQueueSet, portMAX_DELAY);
+		handle = xQueueSelectFromSet(xQueueSet, portMAX_DELAY);		// 读队列集
 
 		/* 2. read queue */
 		xQueueReceive(handle, &i, 0);
